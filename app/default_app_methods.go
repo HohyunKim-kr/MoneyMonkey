@@ -31,22 +31,22 @@ import (
 )
 
 // Name returns the name of the App
-func (app *MoneymonkeyApp) Name() string { return app.BaseApp.Name() }
+func (app *MoneyMonkeyApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block
-func (app *MoneymonkeyApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *MoneyMonkeyApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	// nothing to do in begin block
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker application updates every end block
-func (app *MoneymonkeyApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *MoneyMonkeyApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	// nothing to do in end block
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer application update at chain initialization
-func (app *MoneymonkeyApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *MoneyMonkeyApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState GenesisState
 	if err := json.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -57,12 +57,12 @@ func (app *MoneymonkeyApp) InitChainer(ctx sdk.Context, req abci.RequestInitChai
 }
 
 // LoadHeight loads a particular height
-func (app *MoneymonkeyApp) LoadHeight(height int64) error {
+func (app *MoneyMonkeyApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *MoneymonkeyApp) ModuleAccountAddrs() map[string]bool {
+func (app *MoneyMonkeyApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[authtypes.NewModuleAddress(acc).String()] = true
@@ -77,7 +77,7 @@ func (app *MoneymonkeyApp) ModuleAccountAddrs() map[string]bool {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *MoneymonkeyApp) LegacyAmino() *codec.LegacyAmino {
+func (app *MoneyMonkeyApp) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
@@ -85,33 +85,33 @@ func (app *MoneymonkeyApp) LegacyAmino() *codec.LegacyAmino {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *MoneymonkeyApp) AppCodec() codec.Codec {
+func (app *MoneyMonkeyApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
 // InterfaceRegistry returns SimApp's InterfaceRegistry
-func (app *MoneymonkeyApp) InterfaceRegistry() types.InterfaceRegistry {
+func (app *MoneyMonkeyApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *MoneymonkeyApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *MoneyMonkeyApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *MoneymonkeyApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *MoneyMonkeyApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *MoneymonkeyApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
+func (app *MoneyMonkeyApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 	return app.memKeys[storeKey]
 }
 
@@ -119,19 +119,19 @@ func (app *MoneymonkeyApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 // NOTE: what is subspace..?
 // http://seed-1.mainnet.rizon.world:1317/cosmos/params/v1beta1/params?subspace=transfer&key=SendEnabled
 // gaiad q params subspace baseapp BlockParams --node http://localhost:26657
-func (app *MoneymonkeyApp) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *MoneyMonkeyApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *MoneymonkeyApp) SimulationManager() *module.SimulationManager {
+func (app *MoneyMonkeyApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *MoneymonkeyApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *MoneyMonkeyApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 
 	// NOTE: 1.register rpc routes into lcd api
@@ -169,12 +169,12 @@ func (app *MoneymonkeyApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig confi
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
-func (app *MoneymonkeyApp) RegisterTxService(clientCtx client.Context) {
+func (app *MoneyMonkeyApp) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *MoneymonkeyApp) RegisterTendermintService(clientCtx client.Context) {
+func (app *MoneyMonkeyApp) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 

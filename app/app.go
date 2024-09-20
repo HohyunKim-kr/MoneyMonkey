@@ -190,7 +190,7 @@ func NewMoneyMonkeyApp(
 	encodingConfig monkeyparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) *MoneymonkeyApp {
+) *MoneyMonkeyApp {
 
 	appCodec := encodingConfig.Marshaler
 	legacyAmino := encodingConfig.Amino
@@ -214,7 +214,7 @@ func NewMoneyMonkeyApp(
 	// memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey, "testingkey")
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 
-	app := &MoneymonkeyApp{
+	app := &MoneyMonkeyApp{
 		BaseApp:           bApp,
 		legacyAmino:       legacyAmino,
 		appCodec:          appCodec,
