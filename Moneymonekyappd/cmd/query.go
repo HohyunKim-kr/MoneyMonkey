@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/Jeongseup/MoneyMonkey/app"
+	"github.com/HohyunKim-kr/MoneyMonkey/app"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/rpc"

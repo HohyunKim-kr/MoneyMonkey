@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	jscapp "github.com/HohyunKim-kr/MoneyMonkey/app"
-	jsccmd "github.com/HohyunKim-kr/MoneyMonkey/MoneyMonkeyappd/cmd"
+	jsccmd "github.com/HohyunKim-kr/MoneyMonkey/Moneymonekyappd/cmd"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 )

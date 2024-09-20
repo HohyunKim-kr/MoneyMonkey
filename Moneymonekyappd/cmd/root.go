@@ -20,7 +20,7 @@ import (
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 
 	"github.com/HohyunKim-kr/MoneyMonkey/app"
-	"github.com/HohyunKim-kr/MoneyMonkey/params"
+	"github.com/HohyunKim-kr/MoneyMonkey/app/params"
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the
