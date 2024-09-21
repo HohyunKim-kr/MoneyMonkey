@@ -3,7 +3,7 @@
 set -ux
 
 # setup vars
-NODE_DAEMON=moneymonkeyappd
+NODE_DAEMON=./bin/moneymonkeyappd
 NODE_DENOM=stake
 
 # reset previous init
