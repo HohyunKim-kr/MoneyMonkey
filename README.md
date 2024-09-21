@@ -17,4 +17,10 @@ go build -o bin/moneymonkeyappd -ldflags '-X github.com/cosmos/cosmos-sdk/versio
 ./bin/moneymonkeyappd version
 
 # >>> v1.0.0
+
+# init moneymonkey chain
+./scripts/init.sh
+
+# start moneymonkey chain
+./scripts/start.sh
 ```
