@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/HohyunKim-kr/MoneyMonkey/app"
-	"github.com/HohyunKim-kr/MoneyMonkey/Moneymonekyappd/cmd"
+	"github.com/HohyunKim-kr/MoneyMonkey/moneymonkeyappd/cmd"
 	"github.com/cosmos/cosmos-sdk/server"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 )
